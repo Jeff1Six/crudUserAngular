@@ -7,8 +7,8 @@ Versão do Angular: v15.2.6. Versão indicada do node: v14.20.1.
 Utilizando a API: https://dummyapi.io/data/v1/, seguindo a documentação: https://dummyapi.io/docs (Endpoints de usuários: https://dummyapi.io/docs/user ).
 
 ##### Criar as seguintes paginas:
-- Exibição de lista de usuários
-- Exibição de usuário único
+- Exibição de lista de usuários --OK
+- Exibição de usuário único --OK
 - Criação de usuários
 - Atualização de dados de usuário. 
 

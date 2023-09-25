@@ -1,0 +1,53 @@
+<div class="container">
+  <hr>
+  <div class="input-group">
+    <button class="btn btn-warning text-white">New User</button>
+    <input type="text" class="form-control" [(ngModel)]="input_search" placeholder="Search for user">
+    <button class="btn btn-success" (click)="input_search ? searchUserByText() : searchAllUser()">Search</button>
+  </div>
+  <hr>
+  <div class="alert alert-success my-2" *ngIf="mensagemSuccess">
+    {{mensagemSuccess}}
+  </div>
+  <div class="alert alert-danger my-2" *ngIf="mensagemErro">
+    {{mensagemErro}}
+  </div>
+  <table class="table text-center">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">FIRST NAME</th>
+        <th scope="col">LAST NAME</th>
+        <th scope="col">PICTURE</th>
+        <th scope="col" style="max-width: 50px;max-height: 50px;border-radius: 10px;"></th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let item of list_users.data; let i=index">
+      <tr *ngIf="!edit_user[i]">
+        <th scope="row">{{item.id}}</th>
+        <td class="text-uppercase">{{item.title}}. {{item.firstName}}</td>
+        <td class="text-uppercase">{{item.lastName}}</td>
+        <td class="d-flex justify-content-center">
+          <img [src]="item.picture" style="max-width: 50px;max-height: 50px;border-radius: 10px;" alt="Pitcure user">
+        </td>
+        <td>
+          <button class="btn btn-primary mx-2" (click)="edit_user[i] = !edit_user[i]">EDIT</button>
+        </td>
+      </tr>
+      <tr *ngIf="edit_user[i]">
+        <th scope="row">{{item.id}}</th>
+        <td class="text-uppercase">{{item.title}}. <input type="text" class="form-control" [(ngModel)]="item.firstName"></td>
+        <td class="text-uppercase"><input type="text" class="form-control" [(ngModel)]="item.lastName"></td>
+        <td class="d-flex justify-content-center">
+          <input type="file" class="form-control" [(ngModel)]="item.lastName">
+        </td>
+        <td >
+          <div class="d-flex">
+            <button class="btn btn-danger mx-2" (click)="edit_user[i] = !edit_user[i]">BACK</button>
+            <button class="btn btn-success mx-2" (click)="updateUser(item)">SAVE</button>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
